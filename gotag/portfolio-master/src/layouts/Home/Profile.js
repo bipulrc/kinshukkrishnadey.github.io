@@ -1,18 +1,18 @@
 import profileKatakana from 'assets/katakana-profile.svg?url';
 //import profileImgLarge from 'assets/profile-large.jpg';
-import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
-import profileImg from 'assets/profile.jpg';
+//import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
+//import profileImg from 'assets/profile.jpg';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
-import { Image } from 'components/Image';
-import { Link } from 'components/Link';
+//import { Image } from 'components/Image';
+//import { Link } from 'components/Link';
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
 import { Fragment, useState } from 'react';
-import { media } from 'utils/style';
+//import { media } from 'utils/style';
 import styles from './Profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
@@ -27,7 +27,7 @@ const ProfileText = ({ visible, titleId }) => (
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
     Gotag was founded with the express intention of creating indelible experiences. 
-    We recognize the importance of team-building and engaging activities to foster employees' sense of belonging, accountability, 
+    We recognize the importance of team-building and engaging activities to foster employees sense of belonging, accountability, 
     and love. Having identified the unique needs and diverse dynamics embodied by each workplace, we are driven to deliver bespoke 
     experiences so that each employee feels a sense of belonging - feeling at home!
     </Text>
