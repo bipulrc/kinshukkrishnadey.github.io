@@ -14,9 +14,12 @@ import { useFormInput } from 'hooks';
 import { useRef, useState } from 'react';
 import { cssProps, msToNum, numToMs } from 'utils/style';
 import styles from './Contact.module.css';
+import nodemailer from 'nodemailer';
 
 export const Contact = () => {
-  const errorRef = useRef();
+  const errorRef = useRef('');
+  const name = useFormInput('');
+  const company = useFormInput('');
   const email = useFormInput('');
   const message = useFormInput('');
   const [sending, setSending] = useState(false);
@@ -33,6 +36,25 @@ export const Contact = () => {
     try {
       setSending(true);
 
+      const transporter = nodemailer.createTransport({
+
+        service: "gmail",
+        auth:{
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
+
+        }
+
+
+      });
+
+      const mailOptions = {
+        from: process.env.EMAIL,
+        to: email
+      }
+
+
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`, {
         method: 'POST',
         mode: 'cors',
@@ -40,13 +62,18 @@ export const Contact = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          name: name.value,
+          company: company.value,
           email: email.value,
           message: message.value,
         }),
       });
 
       const responseMessage = await response.json();
+    
+      transporter.sendMail(mailOptions,(error,info)=>{
 
+      
       const statusError = getStatusError({
         status: response?.status,
         errorMessage: responseMessage?.error,
@@ -57,6 +84,8 @@ export const Contact = () => {
 
       setComplete(true);
       setSending(false);
+
+    })
     } catch (error) {
       setSending(false);
       setStatusError(error.message);
@@ -79,14 +108,41 @@ export const Contact = () => {
               as="h1"
               style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
             >
-              <DecoderText text="Say hello" start={status !== 'exited'} delay={300} />
+              <DecoderText text="Say Hello" start={status !== 'exited'} delay={300} />
             </Heading>
             <Divider
               className={styles.divider}
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
             />
+            
+
             <Input
+              required
+              className={styles.input}
+              data-status={status}
+              style={getDelay(tokens.base.durationXS, initDelay)}
+              autoComplete="name"
+              label="Your Name"
+              type="text"
+              maxLength={512}
+              {...name}
+            />
+            
+
+            <Input
+              required
+              className={styles.input}
+              data-status={status}
+              style={getDelay(tokens.base.durationXS, initDelay)}
+              autoComplete="company"
+              label="Your Company Name"
+              type="text"
+              maxLength={512}
+              {...company}
+            />
+
+           <Input
               required
               className={styles.input}
               data-status={status}
@@ -97,6 +153,8 @@ export const Contact = () => {
               maxLength={512}
               {...email}
             />
+
+
             <Input
               required
               multiline

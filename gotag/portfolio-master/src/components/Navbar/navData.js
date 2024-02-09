@@ -12,7 +12,7 @@ export const navLinks = [
     pathname: '/articles',
   },
   {
-    label: 'Contact',
+    label: 'ContactUs',
     pathname: '/contact',
   },
 ];
@@ -20,17 +20,12 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'Twitter',
-    url: 'https://twitter.com/hamishMW',
+    url: 'https://www.linkedin.com/company/thegotag/',
     icon: 'twitter',
   },
   {
     label: 'Figma',
-    url: 'https://www.figma.com/@Hamish',
+    url: 'https://www.instagram.com/thegotag/',
     icon: 'figma',
-  },
-  {
-    label: 'Github',
-    url: 'https://github.com/HamishMW',
-    icon: 'github',
-  },
+  }
 ];
