@@ -22,7 +22,7 @@ export const Post = ({ children, title, date, abstract, banner, timecode, ogImag
   const [dateTime, setDateTime] = useState(null);
   
   useEffect(() => {
-    setDateTime(formatDate(date));
+    // setDateTime(formatDate(date));
   }, [date, dateTime]);
 
   useParallax(0.004, value => {
@@ -95,7 +95,7 @@ export const Post = ({ children, title, date, abstract, banner, timecode, ogImag
                   <ArrowDown aria-hidden />
                 </a>
               </RouterLink>
-              <div className={styles.timecode}>{timecode}</div>
+              {/* <div className={styles.timecode}>{timecode}</div> */}
             </div>
           </div>
         </header>

@@ -31,7 +31,7 @@ const ArticlesPost = ({
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setDateTime(formatDate(date));
+    // setDateTime(formatDate(date));
   }, [date, dateTime]);
   
   const handleMouseEnter = () => {
@@ -84,11 +84,11 @@ const ArticlesPost = ({
             </Text>
             <div className={styles.postFooter}>
               <Button secondary iconHoverShift icon="chevronRight" as="div">
-                Read article
+                Read more
               </Button>
-              <Text className={styles.timecode} size="s">
+              {/* <Text className={styles.timecode} size="s">
                 {timecode}
-              </Text>
+              </Text> */}
             </div>
           </div>
         </a>
@@ -149,7 +149,7 @@ export const Articles = ({ posts, featured }) => {
   const postsHeader = (
     <header className={styles.header}>
       <Heading className={styles.heading} level={5} as="h1">
-        <DecoderText text="Customer Says" />
+        {/* <DecoderText text="Customer Says" /> */}
       </Heading>
       <Barcode />
     </header>

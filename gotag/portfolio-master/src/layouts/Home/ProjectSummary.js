@@ -96,7 +96,7 @@ export const ProjectSummary = ({
             <Model
               alt={model.alt}
               cameraPosition={{ x: 0, y: 0, z: 8 }}
-              showDelay={700}
+              showDelay={100}
               show={visible}
               models={[
                 {
@@ -166,12 +166,12 @@ export const ProjectSummary = ({
               {!alternate && !isMobile && (
                 <>
                   {renderDetails(visible)}
-                  {renderPreview(visible)}
+                  {renderPreview(false)}
                 </>
               )}
               {(alternate || isMobile) && (
                 <>
-                  {renderPreview(visible)}
+                  {renderPreview(false)}
                   {renderDetails(visible)}
                 </>
               )}

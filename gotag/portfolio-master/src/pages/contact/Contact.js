@@ -14,7 +14,7 @@ import { useFormInput } from 'hooks';
 import { useRef, useState } from 'react';
 import { cssProps, msToNum, numToMs } from 'utils/style';
 import styles from './Contact.module.css';
-import nodemailer from 'nodemailer';
+import axios from 'axios';
 
 export const Contact = () => {
   const errorRef = useRef('');
@@ -30,53 +30,45 @@ export const Contact = () => {
   const onSubmit = async event => {
     event.preventDefault();
     setStatusError('');
-
-    if (sending) return;
-
-    try {
-      setSending(true);
-
-      const transporter = nodemailer.createTransport({
-
-        service: "gmail",
-        auth:{
-          user: process.env.EMAIL,
-          pass: process.env.PASSWORD
-
+    var postData = {
+        "Recipients": [
+          {
+            "Email": "info@gotag.in",
+            "Fields": {
+              "name": name.value,
+              "company": company.value,
+              "from" : email.value,
+              "message" : message.value
+            }
+          }
+        ],
+        "Content": {
+          "Body": [
+            {
+              "ContentType": "HTML",
+              "Content": "string",
+              "Charset": "string"
+            }
+          ],
+          "EnvelopeFrom": email.value,
+          "From": "satyampd98@gmail.com",
+          "ReplyTo":  email.value,
+          "Subject": "New Message from Contact Form",
+          "TemplateName": "ContactForm"
         }
-
-
-      });
-
-      const mailOptions = {
-        from: process.env.EMAIL,
-        to: email
-      }
-
-
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name.value,
-          company: company.value,
-          email: email.value,
-          message: message.value,
-        }),
-      });
-
-      const responseMessage = await response.json();
+    };
     
-      transporter.sendMail(mailOptions,(error,info)=>{
-
-      
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json',
+          'X-ElasticEmail-ApiKey' : "9C864429DB23D65079B9D2481177084AC4F8FF487B25A1F15AD3A7D9D410E537FCE30741FECFE010F8B113C37EAF0851"
+      }
+    };
+    try {
+      const response = await axios.post("https://api.elasticemail.com/v4/emails", postData , axiosConfig);
       const statusError = getStatusError({
         status: response?.status,
-        errorMessage: responseMessage?.error,
+        errorMessage: response?.error,
         fallback: 'There was a problem sending your message',
       });
 
@@ -84,8 +76,6 @@ export const Contact = () => {
 
       setComplete(true);
       setSending(false);
-
-    })
     } catch (error) {
       setSending(false);
       setStatusError(error.message);
