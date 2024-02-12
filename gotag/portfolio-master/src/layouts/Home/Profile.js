@@ -1,18 +1,17 @@
-import profileKatakana from 'assets/katakana-profile.svg?url';
-//import profileImgLarge from 'assets/profile-large.jpg';
-//import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
-//import profileImg from 'assets/profile.jpg';
+import profileImgLarge from 'assets/About-us.jpg';
+import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
+import profileImg from 'assets/profile.jpg';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
-//import { Image } from 'components/Image';
-//import { Link } from 'components/Link';
+import { Image } from 'components/Image';
+// import { Link } from 'components/Link';
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
 import { Fragment, useState } from 'react';
-//import { media } from 'utils/style';
+import { media } from 'utils/style';
 import styles from './Profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
@@ -21,15 +20,15 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="About Us" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Gotag is synonymous with unity, harmony, and productivity. 
-      We are a corporate employee engagement agency with our registered office in Mohan Estate and branch office in Gurgaon, 
+      Gotag is synonymous with unity, harmony, and productivity.
+      We are a corporate employee engagement agency with our registered office in Mohan Estate and branch office in Gurgaon,
       catering to all businesses experiencing productivity and employee retention challenges.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-    Gotag was founded with the express intention of creating indelible experiences. 
-    We recognize the importance of team-building and engaging activities to foster employees sense of belonging, accountability, 
-    and love. Having identified the unique needs and diverse dynamics embodied by each workplace, we are driven to deliver bespoke 
-    experiences so that each employee feels a sense of belonging - feeling at home!
+      Gotag was founded with the express intention of creating indelible experiences.
+      We recognize the importance of team-building and engaging activities to foster employees sense of belonging, accountability,
+      and love. Having identified the unique needs and diverse dynamics embodied by each workplace, we are driven to deliver bespoke
+      experiences so that each employee feels a sense of belonging - feeling at home!
     </Text>
   </Fragment>
 );
@@ -73,19 +72,19 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapseDelay={1000}
                 />
                 <div className={styles.tagText} data-visible={visible}>
-                  
+
                 </div>
               </div>
               <div className={styles.image}>
-                {/* <Image
+                <Image
                   reveal
                   delay={100}
                   placeholder={profileImgPlaceholder}
-                  srcSet={[profileImg, profileImgLarge]}
+                  srcSet={[profileImgLarge]}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
                   alt="Me standing in front of the Torii on Miyajima, an island off the coast of Hiroshima in Japan"
-                /> */}
-                <svg
+                />
+                {/* <svg
                   aria-hidden="true"
                   width="135"
                   height="765"
@@ -94,7 +93,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   data-visible={visible}
                 >
                   <use href={`${profileKatakana}#katakana-profile`} />
-                </svg>
+                </svg> */}
               </div>
             </div>
           </div>

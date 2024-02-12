@@ -84,6 +84,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectOne.current)}
         index={1}
         title="Corporate Training"
+        imageName="Corporate-Training"
         description="Tailored learning initiatives to develop employee skills to boost your organization’s strategic goals, encourage retention, and double profits."
         //buttonText="View project"
         //buttonLink="/projects/smart-sparrow"
@@ -105,6 +106,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="Offsites "
+        imageName="Offsite"
         description="A bonding experience away from the office to transform employees into a team that turns into a family!"
         //buttonText="View website"
         //buttonLink="https://gamestack.hamishw.com"
@@ -129,6 +131,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectThree.current)}
         index={3}
         title="Corporate Events"
+        imageName="Business-event"
         description="Breaking silos and building camaraderie with strategically planned and executed events that do wonders for your company."
         buttonText="View project"
         buttonLink="/projects/slice"
@@ -144,12 +147,13 @@ export const Home = () => {
         }}
       />
 
-<ProjectSummary
+      <ProjectSummary
         id="project-4"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={4}
         title="Gifting"
+        imageName="Services-gifting"
         description="Sourcing the best gifts as a gesture of appreciation for enhancing your personal connections with your employees."
         //buttonText="View project"
         //buttonLink="/projects/slice"
@@ -165,12 +169,13 @@ export const Home = () => {
         }}
       />
 
-<ProjectSummary
+      <ProjectSummary
         id="project-5"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={5}
         title="Employee Engagement "
+        imageName="Employee-engagement"
         description="Thoughtfully designed employee engagement activities for contagious employee morale, productivity enhancement, and welcoming culture."
         //buttonText="View project"
         //buttonLink="/projects/slice"
@@ -186,12 +191,13 @@ export const Home = () => {
         }}
       />
 
-<ProjectSummary
+      <ProjectSummary
         id="project-6"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={6}
         title="Company Analysis"
+        imageName="Company-Analysis"
         description="Leveraging data to anticipate change, stay on top of things, and maximize every penny in dynamic times."
         //buttonText="View project"
         //buttonLink="/projects/slice"
