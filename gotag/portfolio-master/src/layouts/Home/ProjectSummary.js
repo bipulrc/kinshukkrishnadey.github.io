@@ -90,7 +90,7 @@ export const ProjectSummary = ({
 
   const renderPreview = visible => (
     <div className={styles.background}>
-      <img src={"/static/" + imageName + ".jpg"} placeholder='img' width={800} height={500}>
+      <img src={"/static/" + imageName + ".jpg"} placeholder='img' className={styles.image}>
       </img>
     </div>
     // <div className={styles.preview}>

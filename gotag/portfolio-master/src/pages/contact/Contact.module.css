@@ -33,6 +33,12 @@
   background-size: cover; /* Resize the background image to cover the entire container */
   opacity: 0.3; 
 }
+/* Adjust the height of the background before pseudo-element for phone screens */
+@media screen and (max-width: 600px) {
+  .background::before {
+    height: 28%; /* Adjust the height for phone screens */
+  }
+}
 
 .form {
   grid-area: 1 / 1;
